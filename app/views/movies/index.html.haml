@@ -1,0 +1,30 @@
+.row
+  - @movies.each do |movie|
+    .col-md-4.movie
+      .poster
+        - if movie.poster.present?
+          = image_tag movie.poster
+        - else
+          = image_tag 'missing_poster.png'
+      .details
+        = movie.title
+        = movie.date.try(:year)
+
+
+-#%table
+-#  %thead
+-#    %th Title
+-#    %th Date
+-#    %th Length
+-#    %th
+-#  %tbody
+      %tr
+        -#%td
+        -#%td
+        -#%td
+        -#%td
+        -#  = link_to 'Show', movie_path(movie.id)
+        -#  = link_to 'Edit', edit_movie_path(movie.id)
+        -#  = link_to 'Delete', movie_path(movie.id), method: :delete, data: { confirm: 'Are you sure you want to delete this movie?' }
+
+-#= link_to 'New Movie', new_movie_path

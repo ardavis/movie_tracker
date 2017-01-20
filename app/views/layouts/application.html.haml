@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title MovieTracker
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    -# Header
+    %nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+      %button.navbar-toggler.navbar-toggler-right
+        %span.navbar-toggler-icon
+      = link_to 'MovieTracker', root_path, class: 'navbar-brand'
+
+      .collapse.navbar-collapse#navbarSupportedContent
+        %ul.navbar-nav.mr-auto
+          %li.nav-item
+            = link_to 'Search', new_search_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'Movies Index', movies_path, class: 'nav-link'
+
+    -# Body
+    .container
+
+      - if notice
+        = notice
+      - if alert
+        = alert
+
+      = yield
+
+    -# Footer

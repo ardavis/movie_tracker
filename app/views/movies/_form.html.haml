@@ -1,0 +1,12 @@
+= form_for @movie do |f|
+
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :date, 'Release Date'
+  = f.date_field :date
+
+  = f.label :length
+  = f.number_field :length
+
+  = f.submit

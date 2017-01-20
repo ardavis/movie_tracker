@@ -1,0 +1,5 @@
+.row
+  - @movies.each do |movie|
+    .col-md-4.movie
+      = link_to add_to_database_path(movie.imdb_id), method: :post do
+        = image_tag movie.poster
