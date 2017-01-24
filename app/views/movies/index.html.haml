@@ -1,15 +1,25 @@
 .row
-  - @movies.each do |movie|
-    .col-md-4.movie
-      .poster
-        - if movie.poster.present?
-          = image_tag movie.poster
-        - else
-          = image_tag 'missing_poster.png'
-      .details
-        = movie.title
-        = movie.date.try(:year)
+  = render @movies
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-# Old code
+
+-#- @movies.each do |movie|
+-#  = render partial: 'movie', locals: { movie: movie }
 
 -#%table
 -#  %thead

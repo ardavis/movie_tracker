@@ -42,14 +42,7 @@ class MoviesController < ApplicationController
   end
 
   def add
-    imdb_id = params[:imdb_id]
-    response = HTTParty.get("http://www.omdbapi.com/?i=#{imdb_id}")
-    data = JSON.parse(response.body)
-
-    new_movie = Movie.new(title: data['Title'],
-              poster: data['Poster'],
-              date: DateTime.parse(data['Released']),
-              length: data['Runtime'].to_i)
+    new_movie = Movie.add(params[:imdb_id])
 
     if new_movie.save
       flash[:notice] = 'Movie added!'

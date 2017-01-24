@@ -1,7 +1,55 @@
 class Movie < ApplicationRecord
 
+  # Associations
+  belongs_to :rating
+
+  has_many :movie_genres
+  has_many :genres, through: :movie_genres
+
   # Creates getter/setters
   attr_accessor :imdb_id
 
   validates :title, presence: true
+
+  def self.add(imdb_id)
+    response = HTTParty.get("#{OMDB_API_URL}/?i=#{imdb_id}")
+    data = JSON.parse(response.body)
+
+    # Check if the rating already exists in the db,
+    # if not, create it
+    rating = Rating.where(name: data['Rated']).first_or_create
+
+
+    # Initialize a new movie with data from OMDB
+    new_movie = Movie.new(title: data['Title'],
+                          poster: data['Poster'],
+                          date: DateTime.parse(data['Released']),
+                          length: data['Runtime'].to_i,
+                          rating: rating,
+                          plot: data['Plot'],
+                          metascore: data['Metascore'].to_i,
+                          imdb_rating: data['imdbRating'].to_f,
+                          imdb_votes: data['imdbVotes'].to_i
+    )
+
+    # Split up the genres and add them to the movie
+    data['Genre'].split(', ').each do |genre_name|
+      genre = Genre.where(name: genre_name).first_or_create
+      new_movie.genres << genre
+    end
+
+    new_movie
+  end
+
+  def display_name
+    "#{title} (#{rating.name})"
+  end
+
+  def genre_names
+    genres.collect(&:name).join(', ')
+  end
+
+  def imdb_results
+    "#{imdb_rating} (#{imdb_votes} votes)"
+  end
 end

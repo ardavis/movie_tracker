@@ -1,0 +1,9 @@
+.col-md-4
+  = link_to movie do
+    .movie
+      .poster
+        = poster_for(movie)
+      .details
+        .title
+          = movie.display_name
+          = movie.date.try(:year)

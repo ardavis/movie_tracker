@@ -1,4 +1,22 @@
-%h1= @movie.title
+.row
+  .col-12.col-sm-6.col-md-4.col-lg-2
+    .movie
+      .poster
+        = poster_for(@movie)
 
-= @movie.date.try(:year)
-= @movie.length
+  .col-12.col-sm-6.col-md-8.col-lg-10
+    .title
+      = @movie.display_name
+    .details
+      .genres
+        = @movie.genre_names
+      .metascore
+        Metascore
+        = @movie.metascore
+      .imdb_rating
+        IMDB Rating
+        = imdb_rating_for(@movie)
+
+.row
+  .col-12
+    = @movie.plot

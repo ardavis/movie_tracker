@@ -1,8 +1,7 @@
 @import "bootstrap";
+@import "font-awesome";
+@import "movies";
 
-.movie {
-  padding-bottom: 20px;
-  img {
-    box-shadow: 0 0 5px 5px rgb(104, 104, 104);
-  }
+.navbar {
+  margin-bottom: 56px;
 }
