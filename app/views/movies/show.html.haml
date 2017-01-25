@@ -11,12 +11,14 @@
       .genres
         = @movie.genre_names
       .metascore
-        Metascore
+        Metascore:
         = @movie.metascore
       .imdb_rating
-        IMDB Rating
+        IMDB Rating:
         = imdb_rating_for(@movie)
+      .director
+        =@movie.director_names
 
-.row
+.row.moviePlot
   .col-12
     = @movie.plot

@@ -9,7 +9,7 @@ module MoviesHelper
     num_halves = twice_rating_rounded % 2 # Get the number of halves, 0 or 1
 
     content_tag :span, class: 'imdb_rating' do
-      results = ''
+      results = "(#{movie.imdb_rating}) "
       # Full stars
       movie.imdb_rating.round.times do
         results << fa_icon('star')

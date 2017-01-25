@@ -52,6 +52,10 @@ class MoviesController < ApplicationController
     redirect_to :back
   end
 
+  def search
+    @movies = Movie.where("UPPER(title) LIKE UPPER(?)", "%#{params[:query]}%")
+  end
+
   private
 
   def movie_params

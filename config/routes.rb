@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   resources :movies
 
+  get 'searchresults', to: 'movies#search'
   get 'search', to: 'searches#new', as: :new_search
   get 'results', to: 'searches#results'
+
   post 'add/:imdb_id', to: 'movies#add', as: :add_to_database
 
   # Replaced these with "resources :movies"

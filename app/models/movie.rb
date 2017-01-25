@@ -4,7 +4,9 @@ class Movie < ApplicationRecord
   belongs_to :rating
 
   has_many :movie_genres
+  has_many :movie_directors
   has_many :genres, through: :movie_genres
+  has_many :directors, through: :movie_directors
 
   # Creates getter/setters
   attr_accessor :imdb_id
@@ -38,6 +40,11 @@ class Movie < ApplicationRecord
       new_movie.genres << genre
     end
 
+    data['Director'].split(', ').each do |director_name|
+      director = Director.where(name: director_name).first_or_create
+      new_movie.directors << director
+    end
+
     new_movie
   end
 
@@ -51,5 +58,13 @@ class Movie < ApplicationRecord
 
   def imdb_results
     "#{imdb_rating} (#{imdb_votes} votes)"
+  end
+
+  def director_names
+    names = 'Director'
+    if directors.size > 1
+      names = names + 's'
+    end
+    names + ': ' + directors.collect(&:name).join(', ')
   end
 end
