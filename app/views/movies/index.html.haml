@@ -1,40 +1,6 @@
+= form_tag searchresults_path, method: :get do
+  = text_field_tag :query, '', placeholder: 'Search for a movie'
+  = submit_tag 'Search'
+
 .row
   = render @movies
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--# Old code
-
--#- @movies.each do |movie|
--#  = render partial: 'movie', locals: { movie: movie }
-
--#%table
--#  %thead
--#    %th Title
--#    %th Date
--#    %th Length
--#    %th
--#  %tbody
-      %tr
-        -#%td
-        -#%td
-        -#%td
-        -#%td
-        -#  = link_to 'Show', movie_path(movie.id)
-        -#  = link_to 'Edit', edit_movie_path(movie.id)
-        -#  = link_to 'Delete', movie_path(movie.id), method: :delete, data: { confirm: 'Are you sure you want to delete this movie?' }
-
--#= link_to 'New Movie', new_movie_path
