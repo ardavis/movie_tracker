@@ -10,8 +10,4 @@ class DirectorsController < ApplicationController
 
   def search
   end
-
-
-
-
 end

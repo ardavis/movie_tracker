@@ -41,15 +41,16 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  # Javascript only
   def add
     new_movie = Movie.add(params[:imdb_id])
 
     if new_movie.save
-      flash[:notice] = 'Movie added!'
+      head :ok
     else
-      flash[:alert] = 'Unable to add movie... :('
+      head :internal_server_error
     end
-    redirect_to :back
+
   end
 
   def search

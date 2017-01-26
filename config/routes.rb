@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'movies#index'
 
   resources :movies
-  resources :directors
+  resources :directors, only: [:index, :show]
 
   get 'searchresults', to: 'movies#search'
   get 'search', to: 'searches#new', as: :new_search

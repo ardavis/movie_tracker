@@ -44,8 +44,6 @@ gem 'haml-rails'
 gem 'httparty'
 gem 'bootstrap'
 gem 'font-awesome-rails'
-gem 'lita-google-images'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -8,6 +8,16 @@
   .details {
     text-align: center;
     padding: 10px 20px;
+
+    .add_movie img {
+      height: 20px;
+    }
+
+    a:active { color: white; }
+
+    .loading, .glyph_confirmed, .glyph_error {
+      display: none;
+    }
   }
 }
 

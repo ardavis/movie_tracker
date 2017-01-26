@@ -1,5 +1,16 @@
 .row
   - @movies.each do |movie|
-    .col-md-4.movie
-      = link_to add_to_database_path(movie.imdb_id), method: :post do
-        = image_tag movie.poster
+    .col-md-4
+      .movie
+        .poster= image_tag movie.poster
+        .details
+          .title
+            = movie.title
+            = movie.date.try(:year)
+          .buttons
+            -# Generally would be a POST request, but the Javascript intercepts it.
+            = link_to add_to_database_path(movie.imdb_id), class: 'btn btn-primary add_movie' do
+              = image_tag 'loading.gif', class: 'loading'
+              .glyph_add= fa_icon('plus')
+              .glyph_confirmed= fa_icon('check')
+              .glyph_error= fa_icon('exclamation')
