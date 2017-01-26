@@ -17,7 +17,11 @@
         IMDB Rating:
         = imdb_rating_for(@movie)
       .director
-        =@movie.director_names
+        Director(s):
+        -@movie.directors.each do |d|
+          .name
+            = link_to d.name, "directors/#{d.id}"
+
 
 .row.moviePlot
   .col-12

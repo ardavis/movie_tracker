@@ -1,0 +1,18 @@
+// Place all the styles related to the directors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.director {
+  width: 80%;
+  background-color: white;
+
+  .poster img { width: 100% }
+
+  .name{
+    text-decoration: underline;
+  }
+
+  .details {
+    text-align: center;
+    padding: 10px 20px;
+  }
+}

@@ -44,6 +44,7 @@ gem 'haml-rails'
 gem 'httparty'
 gem 'bootstrap'
 gem 'font-awesome-rails'
+gem 'lita-google-images'
 
 
 group :development, :test do

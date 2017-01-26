@@ -11,7 +11,7 @@ class Movie < ApplicationRecord
   # Creates getter/setters
   attr_accessor :imdb_id
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
 
   def self.add(imdb_id)
     response = HTTParty.get("#{OMDB_API_URL}/?i=#{imdb_id}")
@@ -60,11 +60,11 @@ class Movie < ApplicationRecord
     "#{imdb_rating} (#{imdb_votes} votes)"
   end
 
-  def director_names
-    names = 'Director'
-    if directors.size > 1
-      names = names + 's'
-    end
-    names + ': ' + directors.collect(&:name).join(', ')
-  end
+  #def director_names
+  #  names = 'Director'
+  #  if directors.size > 1
+  #    names = names + 's'
+  #  end
+  #  names + ': ' + directors.collect(&:name).join(', ')
+  #end
 end
