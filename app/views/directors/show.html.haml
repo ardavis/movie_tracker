@@ -1,0 +1,19 @@
+.row
+  .col-12.col-sm-6.col-md-4.col-lg-2
+    .movie
+      .poster
+        = poster_for_director(@director)
+
+  .col-12.col-sm-6.col-md-8.col-lg-10
+    .title
+      = @director.name
+
+.row
+  .col-md-4
+  - @movies.each do |m|
+    .movie
+      .poster
+        = poster_for(m)
+      .details
+        .title
+          = m.display_name

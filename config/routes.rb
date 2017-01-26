@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root to: 'movies#index'
 
   resources :movies
+  resources :directors
 
   get 'searchresults', to: 'movies#search'
   get 'search', to: 'searches#new', as: :new_search
   get 'results', to: 'searches#results'
+  get 'directors', to: 'directors#index'
+  get 'movies/directors/:id', to: 'directors#show'
 
   post 'add/:imdb_id', to: 'movies#add', as: :add_to_database
 
