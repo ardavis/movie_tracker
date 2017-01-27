@@ -5,7 +5,7 @@ ready = ->
   # background. Then show the user that it worked
   # Maybe some kind of checkmark or something.
 
-  $('.movie a').click (event) ->
+  $('.movie_searches a').click (event) ->
     # Don't actually follow the GET link
     event.preventDefault()
 

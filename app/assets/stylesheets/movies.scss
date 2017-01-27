@@ -3,7 +3,17 @@
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  .poster img { width: 100% }
+  .poster img { width: 100%; }
+  .poster-sm img {
+    width: 15%;
+    margin-bottom: 5px;
+  }
+
+  .title{
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
   .details {
     text-align: center;
@@ -12,8 +22,6 @@
     .add_movie img {
       height: 20px;
     }
-
-    a:active { color: white; }
 
     .loading, .glyph_confirmed, .glyph_error {
       display: none;
@@ -28,4 +36,8 @@
 .moviePlot{
   margin-top: 10px;
   font-size: large;
+}
+
+.movie_searches{
+  a:active { color: white; }
 }

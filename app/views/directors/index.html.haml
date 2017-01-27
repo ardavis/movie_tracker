@@ -1,8 +1,8 @@
 
 .row
-  - @directors.each do |d|
+  - @directors.each do |director|
     .director.col-md-2
       .poster
-        = link_to poster_for_director(d), "directors/#{d.id}"
+        = link_to poster_for_director(director), director
       .details
-        = link_to d.name, "directors/#{d.id}"
+        = link_to director.name, director
