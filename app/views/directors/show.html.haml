@@ -1,21 +1,22 @@
 .row
-  .col-12.col-sm-6.col-md-4.col-lg-2
+  .col-12.col-md-3
     .director
       .poster
         = poster_for_director(@director)
 
-  .col-12.col-sm-6.col-md-8.col-lg-10
-    .title
-      = @director.name
-.row
-  - @movies.each do |movie|
-    .movie
       .title
-        = link_to movie.display_name, movie
-      .col-md-9
-        = movie.plot
-        .poster-sm
-          = link_to poster_for(movie), movie
+        = @director.name
+
+  .col-12.col-md-9
+    - @movies.each do |movie|
+      .row.movie
+        .col-md-3
+          .m-2
+            = link_to poster_for(movie), movie
+        .col-md-9
+          .m-2
+            .title= link_to movie.display_name, movie
+            = movie.plot
 
 
 

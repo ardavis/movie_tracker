@@ -14,12 +14,17 @@
 
       .collapse.navbar-collapse#navbarSupportedContent
         %ul.navbar-nav.mr-auto
-          %li.nav-item
-            = link_to 'Search', new_search_path, class: 'nav-link'
-          %li.nav-item
-            = link_to 'Movies Index', movies_path, class: 'nav-link'
-          %li.nav-item
-            = link_to 'Directors Index', directors_path, class: 'nav-link'
+          - if signed_in?
+            %li.nav-item
+              = link_to 'My Movies', movies_path, class: 'nav-link'
+            %li.nav-item
+              = link_to 'Directors', directors_path, class: 'nav-link'
+            %li.nav-item
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'
+
+        = form_tag '/results', method: :get, class: 'form-inline my-2 my-lg-0' do
+          = text_field_tag :query, '', placeholder: 'Search for a movie', class: 'form-control mr-sm-2'
+          = submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
 
     -# Body
     .container

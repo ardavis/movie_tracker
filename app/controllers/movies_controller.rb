@@ -1,6 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = if params[:query]
+                current_user.movies.where("UPPER(title) LIKE UPPER(?)", "%#{params[:query]}%")
+              else
+                current_user.movies
+              end
   end
 
   def show
@@ -43,18 +47,14 @@ class MoviesController < ApplicationController
 
   # Javascript only
   def add
-    new_movie = Movie.add(params[:imdb_id])
+    movie = Movie.add(params[:imdb_id])
 
-    if new_movie.save
+    if movie.persisted? && current_user.movies << movie
       head :ok
     else
       head :internal_server_error
     end
 
-  end
-
-  def search
-    @movies = Movie.where("UPPER(title) LIKE UPPER(?)", "%#{params[:query]}%")
   end
 
   private

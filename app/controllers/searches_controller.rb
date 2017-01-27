@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
-  def new
-  end
+
+  skip_before_action :authenticate_user!, only: [:results]
 
   def results
     query = params[:query]

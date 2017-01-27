@@ -1,6 +1,9 @@
-= form_tag searchresults_path, method: :get do
-  = text_field_tag :query, '', placeholder: 'Search for a movie'
-  = submit_tag 'Search'
+.row
+  .mx-auto
+    .col
+      = form_tag movies_path, method: :get, class: 'form-inline mb-5' do
+        = text_field_tag :query, '', placeholder: 'Search for a movie', class: 'form-control form-control-lg mr-2'
+        = submit_tag 'Search', class: 'btn btn-primary btn-lg'
 
 .row
   = render @movies

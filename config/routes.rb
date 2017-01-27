@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root to: 'movies#index'
 
   resources :movies
   resources :directors, only: [:index, :show]
 
-  get 'searchresults', to: 'movies#search'
-  get 'search', to: 'searches#new', as: :new_search
   get 'results', to: 'searches#results'
-  get 'directors', to: 'directors#index'
-  get 'movies/directors/:id', to: 'directors#show'
-
   post 'add/:imdb_id', to: 'movies#add', as: :add_to_database
 
   # Replaced these with "resources :movies"
