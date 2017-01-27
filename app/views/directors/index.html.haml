@@ -3,6 +3,6 @@
   - @directors.each do |d|
     .director.col-md-2
       .poster
-        = link_to poster_for_director(d), "directors/#{d.id}"
+        = link_to poster_for_director(d), "/directors/#{d.id}"
       .details
-        = link_to d.name, "directors/#{d.id}"
+        = link_to d.name, "/directors/#{d.id}"
